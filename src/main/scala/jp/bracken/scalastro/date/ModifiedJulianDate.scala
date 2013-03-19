@@ -15,10 +15,10 @@ import org.joda.time.ReadableInstant
   * since the epoch: 17 November 1858 CE 0:00:00.000 (midnight). More
   * historically accurately, Modified Julian Date = Julian Date - 2 400 000.5.
   *
-  * Modified Julian Date differs from Julian Date in two regards: first, the
-  * start of the day aligns with civil time reckoning, at midnight. Second,
-  * since the high-order digits of Julian Dates rarely change, it results in
-  * shorter 5-digit dates (for the time being).
+  * Modified Julian Date differs from Julian Date in two important regards:
+  * first, start of the day aligns with civil time reckoning, at midnight.
+  * Second, it (currently) results in shorter 5-digit dates, which may be
+  * convenient where use is unambiguous.
   *
   * More information about Modified Julian Date available at the
   * [[http://tycho.usno.navy.mil/mjd.html US Naval Observatory Time Service
