@@ -1,7 +1,5 @@
 package jp.bracken.scalastro.date
 
-import org.joda.time.chrono.ISOChronology
-import org.joda.time.chrono.JulianChronology
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.Days
