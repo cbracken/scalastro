@@ -2,6 +2,8 @@ name := "scalastro"
 
 version := "0.0.1"
 
+organization := "jp.bracken"
+
 scalaVersion := "2.10.1"
 
 resolvers ++= Seq(
