@@ -12,7 +12,7 @@ import org.joda.time.ReadableInstant
   * Julian Date (MJD).
   *
   * Modified Julian Date is the count of days (including fractions of a day)
-  * since the epoch: 17 November 1858 CE 0:00:00.000 (midnight). More
+  * since the epoch: 17 November 1858 CE 0:00:00.000 UTC (midnight). More
   * historically accurately, Modified Julian Date = Julian Date - 2 400 000.5.
   *
   * Modified Julian Date differs from Julian Date in two important regards:

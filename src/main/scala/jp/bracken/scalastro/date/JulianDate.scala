@@ -12,7 +12,7 @@ import org.joda.time.ReadableInstant
   * Dates (JD).
   *
   * Julian Date is the count of days (including fractions of a day) since the
-  * epoch: 1 January 4713 BCE at 12:00:00.000 (noon) of the Julian Proleptic
+  * epoch: 1 January 4713 BCE at 12:00:00.000 UTC (noon) of the Julian Proleptic
   * Calendar. It is in wide use by astronomers, geophysicists and others who
   * require an unambiguous dating system based on a continuous count of days.
   *
