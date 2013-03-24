@@ -1,4 +1,4 @@
-package jp.bracken.scalastro.math
+package jp.bracken.scalastro
 
 /* Copyright (C) 2013 Chris Bracken
  *

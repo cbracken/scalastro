@@ -1,4 +1,4 @@
-package jp.bracken.scalastro.date
+package jp.bracken.scalastro
 
 /* Copyright (C) 2013 Chris Bracken
  *
