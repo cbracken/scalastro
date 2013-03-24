@@ -166,7 +166,7 @@ class AngleTest extends FlatSpec with ShouldMatchers {
 
   it should "handle division by reals" in {
     Angle(135, 30, 36) / 2.5 should be (Angle(54, 12, 14.4))
-    Angle(135, 30, 36) / 2.825 should be (Angle(47, 58, 5.309734513254114))
+    Angle(135, 30, 36) / 2.825 should be (Angle(47, 58, 5.309734513254227))
   }
 
   "Angle.equals" should "return true for same inputs" in {

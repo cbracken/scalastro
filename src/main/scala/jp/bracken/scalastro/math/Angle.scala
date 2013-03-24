@@ -72,8 +72,8 @@ class Angle private(val deg:Int, val min:Int, val sec:Double) {
   def /(div:Double): Angle = {
     require(div != 0)
     Angle.fromDegrees(deg / div) +
-    Angle.fromDegrees(min / div / 60) +
-    Angle.fromDegrees(sec / div / 3600)
+    Angle.fromDegrees(min / (div * 60)) +
+    Angle.fromDegrees(sec / (div * 3600))
   }
 
   override def equals(other: Any): Boolean =
