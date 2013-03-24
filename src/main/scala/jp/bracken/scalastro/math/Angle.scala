@@ -23,8 +23,7 @@ import scala.math.Pi
   * [0, 360) degrees.
   */
 class Angle private(val deg:Int, val min:Int, val sec:Double) {
-  def toDegrees(): Double =
-    (sec / 3600.0 + min / 60.0 + deg)
+  def toDegrees(): Double = sec / 3600.0 + min / 60.0 + deg
 
   def toRadians(): Double = (
     2.0 * Pi * sec / 1296000.0 +
@@ -76,7 +75,7 @@ class Angle private(val deg:Int, val min:Int, val sec:Double) {
     Angle.fromDegrees(sec / (div * 3600))
   }
 
-  override def equals(other: Any): Boolean =
+  override def equals(other:Any): Boolean =
     other match {
       case that: Angle =>
         that.isInstanceOf[Angle] &&
