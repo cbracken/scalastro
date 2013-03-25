@@ -27,13 +27,17 @@ object Obliquity {
   private val j2000 = JulianDate.fromInstant(
       new DateTime(2000, 1, 1, 12, 0, 0, DateTimeZone.UTC))
   private val oblCoefs = Array(
-      Angle(23, 26, 21.448), // t^0 term
-      -Angle(0, 0, 46.8150), // t^1 term
-      -Angle(0, 0, 0.0059),  // t^2 term
-      Angle(0, 0, 0.001813)) // t^3 term
+       Angle(23, 26, 21.448),    // t^0 term
+      -Angle( 0,  0, 46.8150),   // t^1 term
+      -Angle( 0,  0,  0.0059),   // t^2 term
+       Angle( 0,  0,  0.001813)) // t^3 term
 
+  /** Returns Earth's axial obliquity relative to the ecliptic at the specified
+    * Julian Date. */
   def forJulianDate(jd: Double): Angle = poly(oblCoefs, (jd - j2000) / 36525)
 
+  /** Returns the evaluation at x of a polynomial
+    * c0 + c1*x + c2*x^2 + ... + cn*x^n with [[Angle]] coefficients */
   private def poly(coefs: Array[Angle], x: Double): Angle = {
     var i = coefs.length - 1
     var p = coefs(i)
