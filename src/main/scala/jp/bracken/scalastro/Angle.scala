@@ -22,7 +22,7 @@ import scala.math.Pi
 /** An angle measured in degrees, minutes and seconds of arc in the range
   * [0, 360) degrees.
   */
-class Angle private(val deg:Int, val min:Int, val sec:Double) {
+class Angle private(val deg: Int, val min: Int, val sec: Double) {
   def toDegrees(): Double = sec / 3600.0 + min / 60.0 + deg
 
   def toRadians(): Double = (
@@ -30,7 +30,7 @@ class Angle private(val deg:Int, val min:Int, val sec:Double) {
     min * Pi / 10800.0 +
     deg * Pi / 180.0)
 
-  def +(rhs:Angle): Angle = {
+  def +(rhs: Angle): Angle = {
     var d = deg + rhs.deg
     var m = min + rhs.min
     var s = sec + rhs.sec
@@ -60,28 +60,28 @@ class Angle private(val deg:Int, val min:Int, val sec:Double) {
     new Angle((360 - d) % 360, m, s)
   }
 
-  def -(rhs:Angle): Angle = this.+(-rhs)
+  def -(a: Angle): Angle = this.+(-a)
 
-  def *(mult:Double): Angle = {
-    Angle.fromDegrees(deg * mult) +
-    Angle.fromDegrees(min * mult / 60) +
-    Angle.fromDegrees(sec * mult / 3600)
+  def *(x: Double): Angle = {
+    Angle.fromDegrees(deg * x) +
+    Angle.fromDegrees(min * x / 60) +
+    Angle.fromDegrees(sec * x / 3600)
   }
 
-  def /(div:Double): Angle = {
+  def /(x: Double): Angle = {
     require(div != 0)
-    Angle.fromDegrees(deg / div) +
-    Angle.fromDegrees(min / (div * 60)) +
-    Angle.fromDegrees(sec / (div * 3600))
+    Angle.fromDegrees(deg / x) +
+    Angle.fromDegrees(min / (x * 60)) +
+    Angle.fromDegrees(sec / (x * 3600))
   }
 
-  override def equals(other:Any): Boolean =
-    other match {
-      case that: Angle =>
-        that.isInstanceOf[Angle] &&
-          deg == that.deg &&
-          min == that.min &&
-          sec == that.sec
+  override def equals(obj: Any): Boolean =
+    obj match {
+      case a: Angle =>
+        a.isInstanceOf[Angle] &&
+          deg == a.deg &&
+          min == a.min &&
+          sec == a.sec
       case _ => false
     }
 
@@ -91,20 +91,20 @@ class Angle private(val deg:Int, val min:Int, val sec:Double) {
 }
 
 object Angle {
-  def apply(deg:Int, min:Int, sec:Double) = {
+  def apply(deg: Int, min: Int, sec: Double) = {
     require(deg >= 0)
     require(min >= 0 && min < 60)
     require(sec >= 0.0 && sec < 60.0)
     new Angle(deg % 360, min, sec)
   }
 
-  def fromDegrees(angle:Double): Angle = {
-    val deg = Math.abs(angle)
+  def fromDegrees(a: Double): Angle = {
+    val deg = Math.abs(a)
     val min = ((deg - deg.toInt) * 60).toInt
     val sec = (deg - deg.toInt) * 3600 - min * 60
-    val a = new Angle(deg.toInt % 360, min, sec)
-    if (angle >= 0) a else -a
+    val angle = new Angle(deg.toInt % 360, min, sec)
+    if (a >= 0) angle else -angle
   }
 
-  def fromRadians(angle:Double): Angle = fromDegrees(angle * 2 * Pi / 360)
+  def fromRadians(a:Double): Angle = fromDegrees(a * Pi / 180)
 }
