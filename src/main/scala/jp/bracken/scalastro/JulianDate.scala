@@ -35,20 +35,19 @@ import org.joda.time.ReadableInstant
   *
   * More information from the
   * [[http://www.iers.org/nn_10910/IERS/EN/Science/Recommendations/resolutionB1.html International
-  * Earth Rotation and Reference Systems Service]].
-  */
+  * Earth Rotation and Reference Systems Service]]. */
 object JulianDate {
   private val epoch = new DateTime(-4713, 1, 1, 12, 0, 0, 0,
       JulianChronology.getInstance(DateTimeZone.UTC))
   private val oneDay = Days.ONE.toStandardDuration.getMillis.doubleValue
 
   /** Returns the Julian Date for the specified instant. */
-  def fromInstant(instant:ReadableInstant): Double =
+  def fromInstant(instant: ReadableInstant): Double =
     new Duration(epoch, instant).getMillis / oneDay
 
   /** Returns a DateTime in ISOChronology for the specified Julian Date. */
-  def toDateTime(julianDate:Double): DateTime =
-    epoch.plus(Duration.millis((julianDate * oneDay).round)).toDateTime(
-      ISOChronology.getInstance(DateTimeZone.UTC))
+  def toDateTime(julianDate: Double): DateTime =
+    epoch.plus(Duration.millis((julianDate * oneDay).round))
+        .toDateTime(ISOChronology.getInstance(DateTimeZone.UTC))
 }
 

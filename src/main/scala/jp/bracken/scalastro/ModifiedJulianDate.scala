@@ -39,20 +39,18 @@ import org.joda.time.ReadableInstant
   * [[http://tycho.usno.navy.mil/mjd.html US Naval Observatory Time Service
   * Department]] and at the
   * [[http://www.iers.org/nn_10910/IERS/EN/Science/Recommendations/resolutionB1.html International
-  * Earth Rotation and Reference Systems Service]].
-  */
+  * Earth Rotation and Reference Systems Service]]. */
 object ModifiedJulianDate {
   private val epoch = new DateTime(1858, 11, 17, 0, 0, 0, 0, DateTimeZone.UTC)
   private val oneDay = Days.ONE.toStandardDuration.getMillis.toDouble
 
   /** Returns the Modified Julian Date for the specified instant. */
-  def fromInstant(instant:ReadableInstant): Double =
+  def fromInstant(instant: ReadableInstant): Double =
     new Duration(epoch, instant).getMillis / oneDay
 
   /** Returns a DateTime in ISOChronology for the specified Modified Julian
-    * Date.
-    */
-  def toDateTime(modifiedJulianDate:Double): DateTime =
+    * Date. */
+  def toDateTime(modifiedJulianDate: Double): DateTime =
     epoch.plus(Duration.millis((modifiedJulianDate * oneDay).round))
 }
 

@@ -21,8 +21,7 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 
 /** Calculations for Earth's axial obliquity relative to the ecliptic.
-  * Ref: Jean Meeus, _Astronomical Algorithms_, 2nd edition, 1998
-  */
+  * Ref: Jean Meeus, _Astronomical Algorithms_, 2nd edition, 1998 */
 object Obliquity {
   private val j2000 = JulianDate.fromInstant(
       new DateTime(2000, 1, 1, 12, 0, 0, DateTimeZone.UTC))

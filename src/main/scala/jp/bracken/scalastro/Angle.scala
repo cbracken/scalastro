@@ -20,15 +20,14 @@ package jp.bracken.scalastro
 import scala.math.Pi
 
 /** An angle measured in degrees, minutes and seconds of arc in the range
-  * [0, 360) degrees.
-  */
+  * [0, 360) degrees. */
 class Angle private(val deg: Int, val min: Int, val sec: Double) {
   def toDegrees(): Double = sec / 3600.0 + min / 60.0 + deg
 
   def toRadians(): Double = (
-    sec * Pi / 648000.0 +
-    min * Pi / 10800.0 +
-    deg * Pi / 180.0)
+      sec * Pi / 648000.0 +
+      min * Pi / 10800.0 +
+      deg * Pi / 180.0)
 
   def +(rhs: Angle): Angle = {
     var d = deg + rhs.deg
@@ -69,7 +68,7 @@ class Angle private(val deg: Int, val min: Int, val sec: Double) {
   }
 
   def /(x: Double): Angle = {
-    require(div != 0)
+    require(x != 0)
     Angle.fromDegrees(deg / x) +
     Angle.fromDegrees(min / (x * 60)) +
     Angle.fromDegrees(sec / (x * 3600))
