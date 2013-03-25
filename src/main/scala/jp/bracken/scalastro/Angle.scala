@@ -26,9 +26,9 @@ class Angle private(val deg:Int, val min:Int, val sec:Double) {
   def toDegrees(): Double = sec / 3600.0 + min / 60.0 + deg
 
   def toRadians(): Double = (
-    2.0 * Pi * sec / 1296000.0 +
-    2.0 * Pi * min / 21600.0 +
-    2.0 * Pi * deg / 360.0)
+    sec * Pi / 648000.0 +
+    min * Pi / 10800.0 +
+    deg * Pi / 180.0)
 
   def +(rhs:Angle): Angle = {
     var d = deg + rhs.deg
