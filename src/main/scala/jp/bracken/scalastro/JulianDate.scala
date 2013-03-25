@@ -43,11 +43,11 @@ object JulianDate {
   private val oneDay = Days.ONE.toStandardDuration.getMillis.doubleValue
 
   /** Returns the Julian Date for the specified instant. */
-  def doubleValue(instant:ReadableInstant): Double =
+  def fromInstant(instant:ReadableInstant): Double =
     new Duration(epoch, instant).getMillis / oneDay
 
   /** Returns a DateTime in ISOChronology for the specified Julian Date. */
-  def fromDouble(julianDate:Double): DateTime =
+  def toDateTime(julianDate:Double): DateTime =
     epoch.plus(Duration.millis((julianDate * oneDay).round)).toDateTime(
       ISOChronology.getInstance(DateTimeZone.UTC))
 }

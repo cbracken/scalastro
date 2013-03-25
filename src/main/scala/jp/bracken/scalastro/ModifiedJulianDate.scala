@@ -43,16 +43,16 @@ import org.joda.time.ReadableInstant
   */
 object ModifiedJulianDate {
   private val epoch = new DateTime(1858, 11, 17, 0, 0, 0, 0, DateTimeZone.UTC)
-  private val oneDay = Days.ONE.toStandardDuration.getMillis.doubleValue
+  private val oneDay = Days.ONE.toStandardDuration.getMillis.toDouble
 
   /** Returns the Modified Julian Date for the specified instant. */
-  def doubleValue(instant:ReadableInstant): Double =
+  def fromInstant(instant:ReadableInstant): Double =
     new Duration(epoch, instant).getMillis / oneDay
 
   /** Returns a DateTime in ISOChronology for the specified Modified Julian
     * Date.
     */
-  def fromDouble(modifiedJulianDate:Double): DateTime =
+  def toDateTime(modifiedJulianDate:Double): DateTime =
     epoch.plus(Duration.millis((modifiedJulianDate * oneDay).round))
 }
 

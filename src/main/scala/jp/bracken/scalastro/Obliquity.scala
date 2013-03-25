@@ -25,7 +25,7 @@ import org.joda.time.DateTimeZone
   */
 object Obliquity {
   private val j2000 =
-    JulianDate.doubleValue(new DateTime(2000, 1, 1, 12, 0, 0, DateTimeZone.UTC))
+    JulianDate.fromInstant(new DateTime(2000, 1, 1, 12, 0, 0, DateTimeZone.UTC))
 
   def forJulianDate(jd:Double): Angle = {
     val t = (jd - j2000) / 36525
