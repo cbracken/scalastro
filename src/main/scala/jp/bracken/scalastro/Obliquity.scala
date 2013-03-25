@@ -34,7 +34,7 @@ object Obliquity {
 
   def forJulianDate(jd: Double): Angle = poly(oblCoefs, (jd - j2000) / 36525)
 
-  def poly(coefs: Array[Angle], x: Double): Angle = {
+  private def poly(coefs: Array[Angle], x: Double): Angle = {
     var i = coefs.length - 1
     var p = coefs(i)
     while (i > 0) {
