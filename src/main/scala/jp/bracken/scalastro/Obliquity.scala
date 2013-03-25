@@ -24,12 +24,23 @@ import org.joda.time.DateTimeZone
   * Ref: Jean Meeus, _Astronomical Algorithms_, 2nd edition, 1998
   */
 object Obliquity {
-  private val j2000 =
-    JulianDate.fromInstant(new DateTime(2000, 1, 1, 12, 0, 0, DateTimeZone.UTC))
+  private val j2000 = JulianDate.fromInstant(
+      new DateTime(2000, 1, 1, 12, 0, 0, DateTimeZone.UTC))
+  private val oblCoefs = Array(
+      Angle(23, 26, 21.448), // t^0 term
+      -Angle(0, 0, 46.8150), // t^1 term
+      -Angle(0, 0, 0.0059),  // t^2 term
+      Angle(0, 0, 0.001813)) // t^3 term
 
-  def forJulianDate(jd:Double): Angle = {
-    val t = (jd - j2000) / 36525
-    Angle(23, 26, 21.448) - (Angle(0, 0, 46.8150) +
-    (Angle(0, 0, 0.0059) - Angle(0, 0, 0.001813) * t) * t) * t
+  def forJulianDate(jd: Double): Angle = poly(oblCoefs, (jd - j2000) / 36525)
+
+  def poly(coefs: Array[Angle], x: Double): Angle = {
+    var i = coefs.length - 1
+    var p = coefs(i)
+    while (i > 0) {
+      i -= 1
+      p = p * x + coefs(i)
+    }
+    p
   }
 }
